@@ -395,7 +395,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
         ,
         {
           type:"text",
-          text: `${steamurl} ${prod_id}`
+          text: `${steamurl}${prod_id}`
         }
       ]
     })
