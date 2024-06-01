@@ -234,7 +234,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
   // console.log(req.body)
   console.log(req.body)
   console.log("userId=> "+userId)
-  const {prod_id, prod_img, prod_name, prod_desc, prod_origiprice,prod_finalprice,url,steamurl } = req.body ;
+  const {prod_id, prod_img, prod_name,  prod_finalprice, url, steamurl } = req.body ;
 
  
    client.pushMessage({
@@ -295,7 +295,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                           "contents": [
                             {
                               "type": "text",
-                              "text": prod_desc,
+                              "text": prod_name,
                               "size": "md",
                               "margin": "none",
                               "style": "italic",
@@ -345,7 +345,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                           "contents": [
                             {
                               "type": "text",
-                              "text": "จาก "+ prod_origiprice.toFixed(0)+" บาท",
+                              "text": "จาก "+ prod_finalprice.toFixed(0)+" บาท",
                               "style": "italic",
                               "size": "sm",
                               "decoration": "line-through",
