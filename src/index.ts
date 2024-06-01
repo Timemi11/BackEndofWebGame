@@ -345,7 +345,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                           "contents": [
                             {
                               "type": "text",
-                              "text": "จาก "+ (prod_price.toFixed(0)/100)+" บาท",
+                              "text": "จาก "+ (prod_price/100).toFixed(0) +" บาท",
                               "style": "italic",
                               "size": "sm",
                               "decoration": "line-through",
@@ -356,7 +356,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                         },
                         {
                           "type": "text",
-                          "text": "ลดเหลือ "+ (prod_price.toFixed(0)/100)+ " บาท",
+                          "text": "ลดเหลือ "+ (prod_price/100).toFixed(0)+ " บาท",
                           "color": "#22c55e",
                           "size": "md",
                           "style": "normal",
