@@ -240,7 +240,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
   if(prod_price === 0 || prod_price === null){
     prod_price ='free';
   }else{
-    prod_price = (prod_price/100).toFixed(0)+' บาท' ;
+    prod_price = (prod_price/100).toFixed(0)+ ' บาท' ;
   }
  
    client.pushMessage({
