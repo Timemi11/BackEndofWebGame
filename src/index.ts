@@ -245,6 +245,9 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
 
 
   console.log(prod_beforeprice === prod_price)
+  console.log("prod_beforepice "+prod_beforeprice )
+  console.log("prod_pice "+prod_price )
+
   if(prod_beforeprice === 0 || prod_beforeprice === null ){
     prod_beforeprice = '-'
     }else{
