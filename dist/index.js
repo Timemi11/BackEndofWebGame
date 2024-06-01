@@ -241,7 +241,7 @@ app.post("/sent-gameproduct/:userId", (req, res) => __awaiter(void 0, void 0, vo
     // console.log(req.body)
     console.log(req.body);
     console.log("userId=> " + userId);
-    const { prod_id, prod_img, prod_name, prod_desc, prod_price, url } = req.body;
+    const { prod_id, prod_img, prod_name, prod_desc, prod_price, url, steamurl } = req.body;
     client.pushMessage({
         to: userId,
         messages: [
@@ -399,7 +399,7 @@ app.post("/sent-gameproduct/:userId", (req, res) => __awaiter(void 0, void 0, vo
             },
             {
                 type: "text",
-                text: `รายละเอียด \n${prod_desc}`
+                text: `${steamurl}+${prod_id}`
             }
         ]
     });
