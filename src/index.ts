@@ -356,7 +356,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                           "contents": [
                             {
                               "type": "text",
-                              "text":  prod_price,
+                              "text":  prod_beforeprice,
                               "style": "italic",
                               "size": "sm",
                               "decoration": "line-through",
