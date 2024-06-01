@@ -237,22 +237,17 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
   let {prod_id, prod_img, prod_name, prod_desc, prod_beforeprice, prod_price, url, steamurl } = req.body ;
 
 
-  if(prod_price === 0 || prod_price === null){
+  if(  (prod_price === 0 || prod_price === null) && (prod_beforeprice === 0 || prod_beforeprice === null)     ){
     prod_price ='ฟรี';
+    prod_beforeprice = '-'
   }else{
     prod_price = "ลดเหลือ " +(prod_price/100).toFixed(0)+ ' บาท' ;
+    prod_beforeprice = 'จาก '+ (prod_beforeprice/100).toFixed(0)+ ' บาท' ;
   }
-
 
   console.log(prod_beforeprice === prod_price)
   console.log("prod_beforepice "+prod_beforeprice )
   console.log("prod_pice "+prod_price )
-
-  if(prod_beforeprice === 0 || prod_beforeprice === null ){
-    prod_beforeprice = '-'
-    }else{
-    prod_beforeprice = 'จาก '+ (prod_beforeprice/100).toFixed(0)+ ' บาท' ;
-  }
  
    client.pushMessage({
       to: userId,
