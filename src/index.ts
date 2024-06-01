@@ -266,6 +266,52 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                   "weight": "bold",
                   "size": "xxl"
                 },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "margin": "lg",
+                  "spacing": "md",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "spacing": "none",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "รายละเอียด",
+                              "weight": "bold",
+                              "size": "xl"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": prod_name,
+                              "size": "md",
+                              "margin": "none",
+                              "style": "italic",
+                              "action": {
+                                "type": "uri",
+                                "uri": url,
+                                "label": "Our Website"
+                              },
+                              "color": "#9290C3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
               ]
             },
             "footer": {
