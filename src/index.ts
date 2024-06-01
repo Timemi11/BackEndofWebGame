@@ -234,7 +234,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
   // console.log(req.body)
   console.log(req.body)
   console.log("userId=> "+userId)
-  const {prod_id, prod_img, prod_name, prod_originalprice, prod_finalprice,url,steamurl } = req.body ;
+  const {prod_id, prod_img, prod_name, prod_originalprice, prod_finalprice,url } = req.body ;
 
  
    client.pushMessage({
@@ -393,10 +393,10 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
           }
         } 
         ,
-        {
-          type:"text",
-          text: `${steamurl}+${prod_id}`
-        }
+        // {
+        //   type:"text",
+        //   text: `${steamurl}+${prod_id}`
+        // }
       ]
     })
 
