@@ -234,7 +234,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
   // console.log(req.body)
   console.log(req.body)
   console.log("userId=> "+userId)
-  const {prod_id, prod_img, prod_name, prod_originalprice, prod_finalprice,url } = req.body ;
+  const {prod_id, prod_img, prod_name, prod_desc, prod_price,url,steamurl } = req.body ;
 
  
    client.pushMessage({
@@ -295,7 +295,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                           "contents": [
                             {
                               "type": "text",
-                              "text": prod_name,
+                              "text": prod_desc,
                               "size": "md",
                               "margin": "none",
                               "style": "italic",
@@ -345,7 +345,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                           "contents": [
                             {
                               "type": "text",
-                              "text": "จาก "+ (prod_originalprice/100).toFixed(0)+" บาท",
+                              "text": "จาก "+ (prod_price + (prod_price*50/100)).toFixed(0)+" บาท",
                               "style": "italic",
                               "size": "sm",
                               "decoration": "line-through",
@@ -356,7 +356,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                         },
                         {
                           "type": "text",
-                          "text": "ลดเหลือ "+ prod_finalprice.toFixed(0)+" บาท",
+                          "text": "ลดเหลือ "+ prod_price.toFixed(0)+" บาท",
                           "color": "#22c55e",
                           "size": "md",
                           "style": "normal",
@@ -393,10 +393,10 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
           }
         } 
         ,
-        // {
-        //   type:"text",
-        //   text: `${steamurl}+${prod_id}`
-        // }
+        {
+          type:"text",
+          text: `${steamurl}+${prod_id}`
+        }
       ]
     })
 
