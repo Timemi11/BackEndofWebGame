@@ -242,10 +242,11 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
   }else{
     prod_price = "ลดเหลือ " +(prod_price/100).toFixed(0)+ ' บาท' ;
   }
+
+
+  console.log(prod_beforeprice === prod_price)
   if(prod_beforeprice === 0 || prod_beforeprice === null ){
     prod_beforeprice = '-'
-    }else if(prod_beforeprice === prod_price){
-      prod_beforeprice = '-'
     }else{
     prod_beforeprice = 'จาก '+ (prod_beforeprice/100).toFixed(0)+ ' บาท' ;
   }
