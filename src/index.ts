@@ -234,8 +234,14 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
   // console.log(req.body)
   console.log(req.body)
   console.log("userId=> "+userId)
-  const {prod_id, prod_img, prod_name, prod_desc, prod_price, url, steamurl } = req.body ;
+  let {prod_id, prod_img, prod_name, prod_desc, prod_price, url, steamurl } = req.body ;
 
+
+  if(prod_price === 0 || prod_price === null){
+    prod_price ='free';
+  }else{
+    prod_price = (prod_price/100).toFixed(0)+' บาท' ;
+  }
  
    client.pushMessage({
       to: userId,
@@ -345,7 +351,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                           "contents": [
                             {
                               "type": "text",
-                              "text": "จาก "+ (prod_price/100).toFixed(0) +" บาท",
+                              "text": "จาก "+ prod_price,
                               "style": "italic",
                               "size": "sm",
                               "decoration": "line-through",
@@ -356,7 +362,7 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                         },
                         {
                           "type": "text",
-                          "text": "ลดเหลือ "+ (prod_price/100).toFixed(0)+ " บาท",
+                          "text": "ลดเหลือ "+ prod_price,
                           "color": "#22c55e",
                           "size": "md",
                           "style": "normal",
