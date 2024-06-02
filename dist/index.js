@@ -241,7 +241,19 @@ app.post("/sent-gameproduct/:userId", (req, res) => __awaiter(void 0, void 0, vo
     // console.log(req.body)
     console.log(req.body);
     console.log("userId=> " + userId);
-    const { prod_id, prod_img, prod_name, prod_desc, prod_price, url, steamurl } = req.body;
+    let { prod_id, prod_img, prod_name, prod_desc, prod_beforeprice, prod_price, url, steamurl } = req.body;
+    if ((prod_price === 0 || prod_price === null) || (prod_beforeprice === 0 || prod_beforeprice === null)) {
+        prod_beforeprice = '-';
+        prod_price = 'ฟรี';
+    }
+    else if (prod_beforeprice === prod_price) {
+        prod_beforeprice = '-';
+        prod_price = "ราคา " + (prod_price / 100).toFixed(0) + ' บาท';
+    }
+    else {
+        prod_price = "ลดเหลือ " + (prod_price / 100).toFixed(0) + ' บาท';
+        prod_beforeprice = 'จาก ' + (prod_beforeprice / 100).toFixed(0) + ' บาท';
+    }
     client.pushMessage({
         to: userId,
         messages: [
@@ -350,7 +362,7 @@ app.post("/sent-gameproduct/:userId", (req, res) => __awaiter(void 0, void 0, vo
                                                 "contents": [
                                                     {
                                                         "type": "text",
-                                                        "text": "จาก " + (prod_price + (prod_price * 50 / 100)).toFixed(0) + " บาท",
+                                                        "text": prod_beforeprice,
                                                         "style": "italic",
                                                         "size": "sm",
                                                         "decoration": "line-through",
@@ -361,7 +373,7 @@ app.post("/sent-gameproduct/:userId", (req, res) => __awaiter(void 0, void 0, vo
                                             },
                                             {
                                                 "type": "text",
-                                                "text": "ลดเหลือ " + prod_price.toFixed(0) + " บาท",
+                                                "text": prod_price,
                                                 "color": "#22c55e",
                                                 "size": "md",
                                                 "style": "normal",
@@ -399,7 +411,7 @@ app.post("/sent-gameproduct/:userId", (req, res) => __awaiter(void 0, void 0, vo
             },
             {
                 type: "text",
-                text: `${steamurl}+${prod_id}`
+                text: `${steamurl}${prod_id}`
             }
         ]
     });
