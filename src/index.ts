@@ -386,9 +386,9 @@ app.post("/sent-gameproduct/:userId", async (req: Request, res: Response) => {
                     {
                       "type": "button",
                       "action": {
-                        "type": "message",
+                        "type": "uri",
                         "label": "ยืนยัน",
-                        "text": "รอดำเนินการ..."
+                        "uri": `${steamurl}${prod_id}`
                       },
                       "color": "#ffffff"
                     }
