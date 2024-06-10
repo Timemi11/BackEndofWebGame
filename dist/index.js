@@ -391,9 +391,9 @@ app.post("/sent-gameproduct/:userId", (req, res) => __awaiter(void 0, void 0, vo
                                     {
                                         "type": "button",
                                         "action": {
-                                            "type": "message",
+                                            "type": "uri",
                                             "label": "ยืนยัน",
-                                            "text": "รอดำเนินการ..."
+                                            "uri": `${steamurl}${prod_id}`
                                         },
                                         "color": "#ffffff"
                                     }
